@@ -1,0 +1,34 @@
+.custom-form {
+  label {
+    font-weight: bold;
+  }
+  .actions {
+    text-align: center;
+    input {
+      font-weight: bold;
+    }
+  }
+}
+
+.field_with_errors {
+  input, select, textarea {
+    border-color: #B8292F;
+  }
+}
+
+.error-message {
+  width: 100%;
+  margin-top: .25rem;
+  color: #dc3545;
+}
+
+.date-picker {
+  .form-control {
+    width: 30% !important;
+  }
+  .field_with_errors {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
+}

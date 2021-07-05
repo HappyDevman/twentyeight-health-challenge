@@ -1,0 +1,65 @@
+.container.w-75
+  h2.text-center.font-weight-bold.my-5
+    | Sign up
+  = form_for resource, as: resource_name, url: registration_path(resource_name), html: { class: 'custom-form mb-4' } do |f|
+    .field.mb-3.row
+      .col-6
+        = f.label :email
+        = f.email_field :email, autofocus: true, autocomplete: 'email', class: 'form-control'
+        = error_for f.object, :email
+      .col-6
+        = f.label :full_name
+        = f.text_field :full_name, class: 'form-control'
+        = error_for f.object, :full_name
+    .field.mb-3.row
+      .col-6
+        = f.label :password, class: 'd-inline-block'
+        = f.password_field :password, class: 'form-control', placeholder: "#{@minimum_password_length} characters minimum"
+        = error_for f.object, :password
+      .col-6
+        = f.label :password_confirmation
+        = f.password_field :password_confirmation, autocomplete: 'new-password', class: 'form-control'
+        = error_for f.object, :password_confirmation
+    .field.mb-3.row
+      .col-6
+        = f.label :birth_date
+        .d-flex.justify-content-between.date-picker
+          = f.date_select :birth_date, { order: [:day, :month, :year], start_year: Date.current.year,
+                  end_year: 1960 }, { class: 'form-control' }
+        = error_for f.object, :birth_date
+      .col-6
+        = f.label :state
+        = f.select :state, options_for_select(STATES.map(&:first), f.object.state), {include_blank: 'Select a state'},
+                class: 'form-control', data: { change_url: change_state_url }
+        = error_for f.object, :state
+    h4.font-weight-bold.mt-4.mb-1
+      | Select a product
+    .mb-3
+      = error_for f.object, :product
+    = f.fields_for :product do |product_form|
+      = product_form.hidden_field :name
+      = product_form.hidden_field :category
+      = product_form.hidden_field :ndc
+      = product_form.hidden_field :qty
+      = product_form.hidden_field :price
+      = product_form.hidden_field :instructions
+    .row.font-weight-bold
+      .col-1
+      .col-2
+        | name
+      .col-3
+        | category
+      .col-2
+        | ndc
+      .col-1
+        | quantity
+      .col-1
+        | price
+      .col-2
+        | instructions
+    .patient-products
+      = render partial: 'shared/product', collection: PRODUCTS, as: :product, locals: { patient: resource }, cached: true
+    .actions.mt-4
+      = f.submit 'Sign up', class: 'form-control btn btn-primary w-25'
+  .text-center.font-weight-bold
+    = render 'devise/shared/links'

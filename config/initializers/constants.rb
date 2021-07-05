@@ -63,11 +63,23 @@ CATEGORIES = [
   'OTC Products'
 ].freeze
 
+# To implement Part 2, I just added banned_states key and value to hash
+# For first product 'Tri-Sprintec', that should be unavailable for states that listed on banned_states
 PRODUCTS = [
-  { name: 'Tri-Sprintec', category: 'Birth Control', ndc: '00000-00-001', qty: 28, price: 20, instructions: 'Lorem ipsum' },
+  { name: 'Tri-Sprintec', category: 'Birth Control', ndc: '00000-00-001', qty: 28, price: 20, instructions: 'Lorem ipsum', banned_states: ['Alabama', 'West Virginia'] },
   { name: 'Jasmiel', category: 'Birth Control', ndc: '00000-00-002', qty: 21, price: 84, instructions: 'Lorem ipsum' },
   { name: 'Plan B', category: 'Emergency Contraception', ndc: '00000-00-003', qty: 1, price: 30, instructions: 'Lorem ipsum' },
   { name: 'Herpes STI Kit', category: 'Testing Kits', ndc: '00000-00-004', qty: 1, price: 99, instructions: 'Lorem ipsum' },
   { name: 'Prenatal Vitamins', category: 'OTC Products', ndc: '00000-00-005', qty: 1, price: 29, instructions: 'Lorem ipsum' },
   { name: 'Ibuprofen', category: 'OTC Products', ndc: '00000-00-006', qty: 60, price: 45, instructions: 'Lorem ipsum' }
 ].freeze
+
+# To implement Part 3, added hash for products that can be offered in some states but the minimum age requirement
+# is different for these products than all other ones in this state.
+AGE_DIFF_PRODUCTS = {
+  '00000-00-002' => {
+    'Washington' => 18,
+    'West Virginia' => 19,
+    'South Carolina' => 17
+  }
+}.freeze

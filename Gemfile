@@ -22,9 +22,7 @@ gem 'jbuilder', '~> 2.7'
 # Use Active Model has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
-gem 'jquery-rails'
-gem 'coffee-rails'
-gem 'bootstrap', '~> 4.4.1'
+# gem 'coffee-rails'
 gem 'slim'
 gem 'httparty'
 # Use Active Storage variant
@@ -38,6 +36,9 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'rubocop'
 end
+
+# Authentication
+gem 'devise'
 
 group :development do
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.

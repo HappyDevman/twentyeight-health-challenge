@@ -1,0 +1,15 @@
+.row
+  .col-1
+    = radio_button_tag 'product', product[:ndc], patient.product.ndc == product[:ndc], class: 'product-select'
+  .col-2.product-name
+    = product[:name]
+  .col-3.product-category
+    = product[:category]
+  .col-2.product-ndc
+    = product[:ndc]
+  .col-1.product-qty
+    = product[:qty]
+  .col-1.product-price
+    = product[:price]
+  .col-2.product-instructions
+    = product[:instructions]
